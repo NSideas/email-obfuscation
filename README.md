@@ -1,1 +1,1 @@
-# email-obfuscation
+# Email Obfuscation for Wordpress
