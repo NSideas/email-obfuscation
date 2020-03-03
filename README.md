@@ -8,37 +8,37 @@ Add the following PHP to your `functions.php` file.
 ```php
 function email_obfuscation( $atts ) {
 
-  $atts = shortcode_atts(
-	  array(
-      'link-text' => NULL,
-		  'username'  => NULL,
-		  'domain'    => NULL
-	  ), $atts, 'email' );
+	$atts = shortcode_atts(
+		array(
+			'link-text' => NULL,
+			'username'  => NULL,
+			'domain'    => NULL
+		), $atts, 'email' );
 
-  if (!empty($atts['username'])) {
-    $un = $atts['username'];
-  } else {
-    $un = 'Hello';
-  }
+	if (!empty($atts['username'])) {
+		$un = $atts['username'];
+	} else {
+		$un = 'Hello';
+	}
 
-  if (!empty($atts['domain'])) {
-    $dm = $atts['domain'];
-  } else {
-    $dm = '@CleveFdn.org';
-  }
+	if (!empty($atts['domain'])) {
+		$dm = $atts['domain'];
+	} else {
+		$dm = '@CleveFdn.org';
+	}
 
-  $classList = 'email-obf hidden';
+	$classList = 'email-obf hidden';
 
-  if (!empty($atts['link-text'])) {
-    $linkText = $atts['link-text'];
-    $classList.= ' has-link-text';
-  } elseif (!empty($atts['username'])) {
-    $linkText = 'Email ' . $un;
-  } else {
-    $linkText = 'Email us';
-  }
+	if (!empty($atts['link-text'])) {
+		$linkText = $atts['link-text'];
+		$classList.= ' has-link-text';
+	} elseif (!empty($atts['username'])) {
+		$linkText = 'Email ' . $un;
+	} else {
+		$linkText = 'Email us';
+	}
 
-  return '<a class="'.$classList.'" data-domain="'.$dm.'" data-un="'.$un.'" href="mailto:nospam">'.$linkText.'<noscript> [Enable Javascript to send an email]</noscript></a>';
+	return '<a class="'.$classList.'" data-domain="'.$dm.'" data-un="'.$un.'" href="mailto:nospam">'.$linkText.'<noscript> [Enable Javascript to send an email]</noscript></a>';
 
 }
 add_shortcode( 'email_nospam', 'email_obfuscation' );
